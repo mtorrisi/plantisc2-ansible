@@ -15,7 +15,6 @@ prerequisite_packages:
   - php7.0-json
   - php7.0-mcrypt
   - php7.0-sqlite3
-  - sqlite3
   - mysql-server
   - mysql-client
   - php7.0-mysql

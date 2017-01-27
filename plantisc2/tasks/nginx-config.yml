@@ -14,13 +14,3 @@
   notify:
     - restart php7.0-fpm
     - restart nginx
-
-- name: Copy public key into docroot
-  authorized_key:
-    user: www-data
-    key: "{{ lookup('file', 'deploykey.pub') }}"
-
-- name: Set www-data user shell
-  user:
-    name: www-data
-    shell: /bin/bash

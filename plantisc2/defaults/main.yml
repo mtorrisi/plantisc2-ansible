@@ -24,7 +24,7 @@ prerequisite_packages:
       - php7.0-mysql
       - python-mysqldb
       - pwgen
-    Debian:
+  Debian:
       - unzip
       - git
       - mcrypt

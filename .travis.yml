@@ -11,4 +11,11 @@ install:
 
 script:
   # We'll add some commands to test the role here.
-  ansible-playbook -i tests/inventory plantisc2-roles.yml --syntax-check
+  - ansible-playbook -i tests/inventory plantisc2-roles.yml --syntax-check
+  # run the playbook
+  - ansible-playbook -c local plantisc2-roles.yml
+  #  Run the role/playbook again, checking to make sure it's idempotent.
+  - >
+      ansible-playbook -i tests/inventory plantisc2-roles.yml --connection=local  | grep -q 'changed=0.*failed=0'  && (echo 'Idempotence test: pass' && exit 0)  || (echo 'Idempotence test: fail' && exit 1)
+  # Request a page via the web server, to make sure it's running and responds.
+  - "curl http://localhost/"

@@ -12,5 +12,5 @@
     src: nginx.conf.j2
     dest: /etc/nginx/sites-available/default
   notify:
-    - restart php7.0-fpm
-    - restart nginx
+    - Restart php7.0-fpm
+    - Restart nginx

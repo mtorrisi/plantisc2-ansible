@@ -5,10 +5,10 @@
     regexp: '^(.*)cgi.fix_pathinfo='
     line: cgi.fix_pathinfo=0
   notify:
-    - restart php7.0-fpm
-    - restart nginx
+    - Restart php7.0-fpm
+    - Restart nginx
 
-- name: enable php7.0 mcrypt module
+- name: Enable php7.0 mcrypt module
   shell: phpenmod mcrypt
   args:
     creates: /etc/php/7.0/cli/conf.d/20-mcrypt.ini

@@ -5,5 +5,5 @@
     state: "latest"
   with_items: "{{ prerequisite_packages }}"
   notify:
-    - restart php7.0-fpm
-    - restart nginx
+    - Restart php7.0-fpm
+    - Restart nginx

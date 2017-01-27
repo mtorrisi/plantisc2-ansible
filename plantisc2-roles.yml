@@ -1,46 +1,8 @@
 ---
 - hosts: plantisc2
   become: yes
-  tasks:
-  - name: Allow http
-    ufw:
-      rule: allow
-      port: 80
-      proto: tcp
-    become: yes
-  - name: Allow and https
-    ufw:
-      rule: allow
-      port: 443
-      proto: tcp
-    become: yes
-
-  - name: Install Packages
-    apt:
-      name: "{{ item }}"
-      update_cache: yes
-      state: "latest"
-    with_items:
-      - unzip
-      - git
-      - mcrypt
-      - nginx
-      - php7.0-cli
-      - php7.0-curl
-      - php7.0-fpm
-      - php7.0-intl
-      - php7.0-json
-      - php7.0-mcrypt
-      - php7.0-sqlite3
-      - sqlite3
-      - mysql-server
-      - mysql-client
-      - php7.0-mysql
-      - python-mysqldb
-      - pwgen
-    notify:
-      - restart php7.0-fpm
-      - restart nginx
+  roles:
+    - plantisc2
 
   - name: Ensure php7.0-fpm cgi.fix_pathinfo=0
     lineinfile:

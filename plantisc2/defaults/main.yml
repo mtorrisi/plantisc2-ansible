@@ -1,2 +1,23 @@
 ---
 # defaults file for plantisc2
+open_ports:
+  - 80
+  - 443
+prerequisite_packages:
+  - unzip
+  - git
+  - mcrypt
+  - nginx
+  - php7.0-cli
+  - php7.0-curl
+  - php7.0-fpm
+  - php7.0-intl
+  - php7.0-json
+  - php7.0-mcrypt
+  - php7.0-sqlite3
+  - sqlite3
+  - mysql-server
+  - mysql-client
+  - php7.0-mysql
+  - python-mysqldb
+  - pwgen

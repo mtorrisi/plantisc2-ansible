@@ -106,7 +106,7 @@
   - name: Create MySQL User
     mysql_user:
       name: tissue
-      password: {{ dbpwd.stdout }}
+      password: "{{ dbpwd.stdout }}"
       priv: tissue.*:ALL
       state: present
     when: dbpwd.changed

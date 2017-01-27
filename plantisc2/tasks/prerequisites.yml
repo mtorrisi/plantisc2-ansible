@@ -1,0 +1,9 @@
+---
+- package:
+    name: "{{ item }}"
+    update_cache: yes
+    state: "latest"
+  with_items: "{{ prerequisite_packages }}"
+  notify:
+    - restart php7.0-fpm
+    - restart nginx

@@ -1,2 +1,5 @@
 ---
 # tasks file for plantisc2
+- include: firewall.yml
+- include: prerequisites.yml
+- include: php-config.yml

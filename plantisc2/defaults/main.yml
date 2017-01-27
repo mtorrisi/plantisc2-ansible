@@ -1,5 +1,6 @@
 ---
 # defaults file for plantisc2
+webserver: nginx
 open_ports:
   - 80
   - 443

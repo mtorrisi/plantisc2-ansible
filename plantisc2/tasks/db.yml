@@ -1,0 +1,49 @@
+---
+- name: Create MySQL DB
+  mysql_db:
+    name: tissue
+    state: present
+
+- name: Generate DB password
+  shell: pwgen -C -n -s 32 1
+  args:
+    creates: /var/www/plantisc2/.dbpw
+  register: dbpwd
+  # - debug: msg="the echo was "{{ dbpwd.stdout }}""
+
+- name: Create MySQL User
+  mysql_user:
+    name: tissue
+    password: "{{ dbpwd.stdout }}"
+    priv: tissue.*:ALL
+    state: present
+  when: dbpwd.changed
+
+- name: set DB_DATABASE
+  lineinfile:
+    dest: /var/www/plantisc2/.env
+    regexp: '^DB_DATABASE='
+    line: DB_DATABASE=tissue
+
+- name: set DB_USERNAME
+  lineinfile:
+    dest: /var/www/plantisc2/.env
+    regexp: '^DB_USERNAME='
+    line: DB_USERNAME=tissue
+
+- name: set DB_PASSWORD
+  lineinfile:
+    dest: /var/www/plantisc2/.env
+    regexp: '^DB_PASSWORD='
+    line: DB_PASSWORD={{ dbpwd.stdout }}
+  when: dbpwd.changed
+
+- name: Save dbpw file
+  lineinfile:
+    dest: /var/www/plantisc2/.dbpw
+    line: "{{ dbpwd.stdout }}"
+    create: yes
+    state: present
+  become: yes
+  become_user: www-data
+  when: dbpwd.changed

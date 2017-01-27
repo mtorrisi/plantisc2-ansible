@@ -1,0 +1,6 @@
+- name: Open ports
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  with_items: "{{ open_ports }}"

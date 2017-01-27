@@ -1,0 +1,7 @@
+- name: Clone git repository
+  git:
+    dest: /var/www/plantisc2
+    repo: https://github.com/mtorrisi/test.git
+    update: yes
+  become: yes
+  become_user: www-data

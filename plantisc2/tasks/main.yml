@@ -3,4 +3,4 @@
 - include: firewall.yml
 - include: prerequisites.yml
 - include: php-config.yml
-- include: nginx-config.yml when webserver == 'nging'
+- include: nginx-config.yml when webserver == 'nginx'

@@ -2,7 +2,7 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server ipv6only=on;
 
-    root {{ docroot }}/plantisc2;
+    root {{ docroot }}/plantisc2/tissue;
     index index.php index.html index.htm;
 
     server_name {{ inventory_hostname }};

@@ -1,7 +1,8 @@
 - name: Clone git repository
   git:
     dest: /var/www/plantisc2
-    repo: https://github.com/mtorrisi/test.git
+    repo: https://github.com/sci-gaia/Plantisc2.git
     update: yes
+    version: remove-archive
   become: yes
   become_user: www-data

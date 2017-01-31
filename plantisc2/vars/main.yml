@@ -20,3 +20,13 @@ prerequisite_packages:
   - php7.0-mysql
   - python-mysqldb
   - pwgen
+mysql_root_password: super-secret-password
+mysql_databases:
+  - name: tissue
+    encoding: latin1
+    collation: latin1_general_ci
+mysql_users:
+  - name: tissue
+    host: "localhost"
+    password: secret-password
+    priv: "tissue.*:ALL"

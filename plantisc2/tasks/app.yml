@@ -6,3 +6,14 @@
     version: remove-archive
   become: yes
   become_user: www-data
+
+- name: Copy sql Script
+  template:
+    src: tissue.sql
+    dest: /tmp/tissue.sql
+
+- name: Import tissue.sql
+  mysql_db:
+    state: import
+    name: tissue
+    target: /tmp/tissue.sql

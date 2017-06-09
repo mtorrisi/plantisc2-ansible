@@ -1,0 +1,11 @@
+---
+- package:
+    name: "{{ item }}"
+    update_cache: yes
+    state: "latest"
+  with_items: "{{ prerequisite_packages }}"
+
+- file:
+    path: /var/www/plantisc2
+    state: directory
+    mode: 0755

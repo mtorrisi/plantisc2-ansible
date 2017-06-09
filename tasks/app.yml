@@ -1,0 +1,25 @@
+- name: Clone git repository
+  git:
+    dest: /var/www/plantisc2
+    repo: https://github.com/mtorrisi/Plantisc2.git
+    update: yes
+  become: yes
+
+- name: Create DB (if necessary)
+  mysql_db:
+    name: tissue
+    state: present
+  register: db_created
+
+- name: Copy sql Script
+  template:
+    src: tissue.sql
+    dest: /tmp/tissue.sql
+  #when: db_created.changed
+
+- name: Import tissue.sql
+  mysql_db:
+    state: import
+    name: tissue
+    target: /tmp/tissue.sql
+  #when: db_created.changed

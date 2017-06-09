@@ -1,6 +1,0 @@
----
-- hosts: plantisc2
-  become: yes
-  roles:
-    - plantisc2
-    - geerlingguy.mysql

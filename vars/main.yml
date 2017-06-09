@@ -47,5 +47,5 @@ mysql_databases:
 mysql_users:
   - name: tissue
     host: "localhost"
-    password: tissue
+    password: secret-fake-password
     priv: "tissue.*:ALL"
